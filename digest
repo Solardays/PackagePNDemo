@@ -1,0 +1,51 @@
+retrofit使用：
+  1.baseurl后如果有url地址，必须以"/"结尾
+  2.接口中call必须含有泛型
+  3.get中：注解中必须要有一部分的url地址，不能光是请求体
+  4.@Path取代块只能替换url而不能替换参数参数应该用@query
+
+  retrofit请求方式：
+
+        { }取代块和@Path
+
+        //@Query 键值对传参
+
+        //@QueryMap 参数集合
+
+        //@Body 请求体
+
+        //@FormUrlEncoded 和@Field 发送表单数据
+
+        //@Multipart和@Part 发送字节流数据
+
+        //@Headers给函数设置header
+
+        //适配Rxjava
+
+
+RxJava使用
+  观察者模式使用
+    Observable (可观察者，即被观察者)、 Observer (观察者)、 subscribe (订阅)、事件。
+    Observable 和 Observer 通过 subscribe() 方法实现订阅关系，从而 Observable 可以在需要的时候发出事件来通知 Observer。
+
+    Observer/Subscriber：onNext() ，onCompleted() 和 onError()
+    Observable
+
+
+  参数依次发送出来，用just和from代替create
+    just(T...): 将传入的参数依次发送出来
+    from(T[]) / from(Iterable<? extends T>) : 将传入的数组或 Iterable 拆分成具体对象后，依次发送出来
+
+    线程控制:使用 subscribeOn() 和 observeOn() 两个方法来对线程进行控制
+        subscribeOn(): 指定 subscribe() 所发生的线程，即 Observable.OnSubscribe 被激活时所处的线程。或者叫做事件产生的线程。
+        observeOn(): 指定 Subscriber 所运行在的线程。或者叫做事件消费的线程。
+
+        AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行
+        Schedulers.immediate(): 直接在当前线程运行
+        Schedulers.newThread(): 总是启用新线程
+        Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler;数量上限的线程池，可以重用空闲的线程
+        Schedulers.computation(): 计算所使用的 Scheduler。
+
+    变换
+        map();1对1的关系
+        flatMap();1对n的关系
